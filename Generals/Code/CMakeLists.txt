@@ -28,6 +28,10 @@ target_link_libraries(gi_always INTERFACE
     gi_libraries_include
     corei_always # Must stay below so headers from game are included first
 )
+# Link imgui for rendering targets (dx8wrapper, gameclient, winmain)
+if (RTS_BUILD_OPTION_IMGUI)
+    target_link_libraries(gi_always INTERFACE lib_imgui)
+endif ()
 target_link_libraries(gi_always_no_pch INTERFACE
     gi_libraries_include
     corei_always_no_pch # Must stay below so headers from game are included first
